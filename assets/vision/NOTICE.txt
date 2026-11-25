@@ -1,0 +1,9 @@
+TensorFlow.js 4.22.0 and coco-ssd 2.2.3, Google LLC, Apache License 2.0.
+Original distributions: https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@4.22.0/dist/tf.min.js
+https://cdn.jsdelivr.net/npm/@tensorflow-models/coco-ssd@2.2.3/dist/coco-ssd.min.js
+TensorFlow SSD Lite MobileNet v2 model, bundled graph and weights:
+https://storage.googleapis.com/tfjs-models/savedmodel/ssdlite_mobilenet_v2/model.json
+Coffee photograph: Rachel Michetti, CC0, scikit-image sample collection.
+https://scikit-image.org/docs/stable/api/skimage.data.html#skimage.data.coffee
+TensorFlow.js WebAssembly backend 4.22.0, Google LLC, Apache License 2.0.
+https://www.npmjs.com/package/@tensorflow/tfjs-backend-wasm

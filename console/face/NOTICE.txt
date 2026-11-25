@@ -1,0 +1,4 @@
+face-api.js 0.22.2 by Vincent Mühler and contributors. Bundled upstream distribution and pretrained weights.
+https://github.com/justadudewhohacks/face-api.js
+https://github.com/justadudewhohacks/face-api.js/tree/master/weights
+See LICENSE for the library license. Models: tiny face detector, tiny 68-point landmarks, face recognition.

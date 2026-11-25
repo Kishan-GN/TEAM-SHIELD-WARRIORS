@@ -1,0 +1,11 @@
+<!doctype html><html><head><meta charset="utf-8"><title>Local enrolled comparison</title></head><body><script src="face/face-api.min.js"></script><script>
+let ready;
+async function descriptor(image){
+ ready=ready||Promise.all([faceapi.nets.tinyFaceDetector.loadFromUri('face'),faceapi.nets.faceLandmark68TinyNet.loadFromUri('face'),faceapi.nets.faceRecognitionNet.loadFromUri('face')]);
+ await ready;
+ const local=new Image();await new Promise((ok,fail)=>{local.onload=ok;local.onerror=fail;local.src=image.src;});
+ const result=await faceapi.detectAllFaces(local,new faceapi.TinyFaceDetectorOptions({inputSize:224,scoreThreshold:.45})).withFaceLandmarks(true).withFaceDescriptors();
+ if(result.length!==1)throw new Error('Exactly one clearly visible face is required. Move closer and try again.');
+ return Array.from(result[0].descriptor);
+}
+</script></body></html>

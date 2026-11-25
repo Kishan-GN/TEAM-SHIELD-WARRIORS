@@ -1,0 +1,17 @@
+const assert=require('node:assert/strict');
+require('../tracker.js');
+const hist=new Float32Array(64);hist[20]=1;
+const detection=x=>({box:[x,25,14,12],hist,area:168});
+const engine=new Argus.Tracker(320,180);
+for(let i=0;i<5;i++)engine.update([detection(30),detection(50)],i/12);
+engine.update([],1);
+assert.equal(engine.update([detection(40)],1.2).length,0);
+assert.equal(engine.uncertain.length,1);
+assert.equal(engine.serial,2);
+const recovered=engine.update([detection(30),detection(50)],1.4);
+assert.deepEqual(recovered.map(t=>t.id),[1,2]);
+assert.equal(engine.recoveries,2);
+engine.update([],10);
+assert.equal(engine.tracks.length,0);
+assert.deepEqual(Argus.assignment([[.1,.2,.78,.78],[.11,.7,.78,.78]]),[1,0]);
+console.log('PASS: ambiguous reappearance, distinct recovery, memory expiry, global assignment.');
